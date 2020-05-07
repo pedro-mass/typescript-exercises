@@ -15,6 +15,7 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
+    "format": "npx prettier --write ./exercises/**/*[!*.txt]",
     "0": "ts-node exercises/exercise-00/index.ts",
     "1": "ts-node exercises/exercise-01/index.ts",
     "2": "ts-node exercises/exercise-02/index.ts",

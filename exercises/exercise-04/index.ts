@@ -102,7 +102,10 @@ function logPerson(person: Person) {
   )
 }
 
-function filterUsers(persons: Person[], criteria: Partial<Exclude<User, "type">): User[] {
+function filterUsers(
+  persons: Person[],
+  criteria: Partial<Exclude<User, 'type'>>
+): User[] {
   return persons.filter(isUser).filter((user) => {
     let criteriaKeys = Object.keys(criteria) as (keyof User)[]
     return criteriaKeys.every((fieldName) => {
