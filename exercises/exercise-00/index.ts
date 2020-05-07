@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import chalk from "chalk";
 
 /*
 
@@ -27,30 +27,30 @@ Run this exercise:
 */
 
 interface Users {
-  name: string
-  age: number
-  occupation: string
+  name: string;
+  age: number;
+  occupation: string;
 }
 
 const users: Users[] = [
   {
-    name: 'Max Mustermann',
+    name: "Max Mustermann",
     age: 25,
-    occupation: 'Chimney sweep',
+    occupation: "Chimney sweep"
   },
   {
-    name: 'Kate Müller',
+    name: "Kate Müller",
     age: 23,
-    occupation: 'Astronaut',
-  },
-]
+    occupation: "Astronaut"
+  }
+];
 
 function logPerson(user: Users) {
-  console.log(` - ${chalk.green(user.name)}, ${user.age}`)
+  console.log(` - ${chalk.green(user.name)}, ${user.age}`);
 }
 
-console.log(chalk.yellow('Users:'))
-users.forEach(logPerson)
+console.log(chalk.yellow("Users:"));
+users.forEach(logPerson);
 
 // In case if you are stuck:
 // https://www.typescriptlang.org/docs/handbook/interfaces.html#introduction
