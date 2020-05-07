@@ -68,32 +68,12 @@ const users: User[] = [
   { type: 'user', name: 'Kate Müller', age: 23, occupation: 'Astronaut' },
 ]
 
-// type AdminsApiResponse =
-//   | {
-//       status: "success";
-//       data: Admin[];
-//     }
-//   | {
-//       status: "error";
-//       error: string;
-//     };
-
 function requestAdmins(callback: (response: ApiResponse<Admin[]>) => void) {
   callback({
     status: 'success',
     data: admins,
   })
 }
-
-// type UsersApiResponse =
-//   | {
-//       status: 'success'
-//       data: User[]
-//     }
-//   | {
-//       status: 'error'
-//       error: string
-//     }
 
 type ApiResponse<T> =
   | {
@@ -122,7 +102,7 @@ function requestCurrentServerTime(
 }
 
 function requestCoffeeMachineQueueLength(
-  callback: (response: ApiResponse<undefined>) => void
+  callback: (response: ApiResponse<number>) => void
 ) {
   callback({
     status: 'error',

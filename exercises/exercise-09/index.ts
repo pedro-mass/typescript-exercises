@@ -75,10 +75,6 @@ type ApiResponse<T> =
       error: string
     }
 
-function promisify(arg: unknown): unknown {
-  return null
-}
-
 const oldApi = {
   requestAdmins(callback: (response: ApiResponse<Admin[]>) => void) {
     callback({
@@ -108,11 +104,21 @@ const oldApi = {
   },
 }
 
+function promisify<T>(arg: Function): () => Promise<T> {
+  return () => new Promise((resolve, reject) => {
+    try {
+      return arg(({data}: {data: T}) => resolve(data));
+    } catch (e) {
+      return reject(e)
+    }
+  });
+}
+
 const api = {
-  requestAdmins: promisify(oldApi.requestAdmins),
-  requestUsers: promisify(oldApi.requestUsers),
-  requestCurrentServerTime: promisify(oldApi.requestCurrentServerTime),
-  requestCoffeeMachineQueueLength: promisify(
+  requestAdmins: promisify<Admin[]>(oldApi.requestAdmins),
+  requestUsers: promisify<User[]>(oldApi.requestUsers),
+  requestCurrentServerTime: promisify<number>(oldApi.requestCurrentServerTime),
+  requestCoffeeMachineQueueLength: promisify<ApiResponse<number>>(
     oldApi.requestCoffeeMachineQueueLength
   ),
 }
